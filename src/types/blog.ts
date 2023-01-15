@@ -4,15 +4,17 @@ export type Blog = {
   content: string;
   tags: Tag[];
   thumbnail: string;
-  createdDate: string;
-  updatedDate: string;
-  publishedDate: string;
+  createdAt: string;
+  updatedAt: string;
+  revisedAt: string;
+  publishedAt: string;
 };
 
 export type Tag = {
   id: string;
   tag: string;
-  createdDate: string;
-  updatedDate: string;
-  publishedDate: string;
+  createdAt: string;
+  updatedAt: string;
+  revisedAt: string;
+  publishedAt: string;
 };
