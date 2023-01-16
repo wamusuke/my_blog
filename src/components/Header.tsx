@@ -6,14 +6,14 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import ImportantDevicesIcon from '@mui/icons-material/ImportantDevices';
+import { color } from '@/libs/color';
 
-function Header() {
+const Header = () => {
   return (
-    <AppBar position='static' color='inherit'>
+    <AppBar position='static' sx={{ backgroundColor: '#7BA2D4' }}>
       <Container maxWidth='xl'>
-        <Toolbar disableGutters>
+        <Toolbar disableGutters={false}>
           <Typography
             variant='h6'
             noWrap
@@ -34,12 +34,12 @@ function Header() {
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton sx={{ p: 0 }}>
+          <IconButton sx={{ p: 0 }} href={'/profile'}>
             <Avatar alt='MyIcon' src={'/images/myIcon.png'} />
           </IconButton>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
 export default Header;
