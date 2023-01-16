@@ -1,12 +1,9 @@
 import type { NextPage } from 'next';
 import { Button } from '@mui/material';
+import ResponsiveAppBar from 'src/components/Header';
 
 const profile: NextPage = () => {
-  return (
-    <>
-      <Button variant='contained'>Hello World</Button>
-    </>
-  );
+  return <ResponsiveAppBar />;
 };
 
 export default profile;
