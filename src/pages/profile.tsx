@@ -3,12 +3,12 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Footer from '@/components/Footer';
 import type { NextPage } from 'next';
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import useWindowDimensions from '@/hooks/useWindowDimensions';
 
 const profile: NextPage = () => {
+  // console.log(window.innerHeight);
   return (
     <>
       <Header />
@@ -20,7 +20,7 @@ const profile: NextPage = () => {
           <Grid item>
             <Avatar alt='MyIcon' src={'/images/myIcon.png'} sx={{ width: 250, height: 250 }} />
           </Grid>
-          <Grid container direction={'column'} sx={{ width: 'auto' }}>
+          <Grid container direction={'column'} sx={{ width: 'auto'}}>
             <Grid
               container
               direction={'row'}
@@ -180,6 +180,7 @@ const profile: NextPage = () => {
           <br />
           現在、大学4年生です。資格の勉強やプログラミング、研究関連で備忘録としてアウトプットしたものが役に立てば幸いです。
         </Box>
+        {/* ここにGoogle Adsense入れる */}
       </Container>
       <Footer />
     </>
