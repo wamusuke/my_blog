@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { NextPage } from 'next';
 import { Box } from '@mui/material';
+import { NextPage } from 'next';
+import * as React from 'react';
 
 const Footer: NextPage = () => {
   return (

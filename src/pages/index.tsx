@@ -1,7 +1,7 @@
 import type { InferGetStaticPropsType, NextPage } from 'next';
+import Header from '@/components/Header';
 import { client } from 'src/libs/client';
 import type { Blog, Tag } from 'src/types/blog';
-import Header from '@/components/Header';
 
 // microCMSへAPIリクエスト
 export const getStaticProps = async () => {
