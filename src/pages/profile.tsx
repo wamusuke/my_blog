@@ -1,9 +1,16 @@
 import type { NextPage } from 'next';
-import Header from 'src/components/Header';
-import { Avatar } from '@mui/material';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ImageIcon from '@mui/icons-material/Image';
+import SchoolIcon from '@mui/icons-material/School';
 
 const profile: NextPage = () => {
   return (
@@ -16,10 +23,11 @@ const profile: NextPage = () => {
         </center>
       </Container>
       <Container maxWidth='md' sx={{ backgroundColor: 'white' }}>
-        <Typography variant='h4' gutterBottom sx={{ fontFamily: 'cursive' }}>
-          Background
+        <Typography variant='h4' sx={{ fontFamily: 'Kiwi Maru' }}>
+          経歴
         </Typography>
       </Container>
+      <Footer />
     </>
   );
 };

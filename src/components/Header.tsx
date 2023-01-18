@@ -7,9 +7,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import ImportantDevicesIcon from '@mui/icons-material/ImportantDevices';
-import { color } from '@/libs/color';
+import { NextPage } from 'next';
 
-const Header = () => {
+const Header: NextPage = () => {
   return (
     <AppBar position='static' sx={{ backgroundColor: '#7BA2D4' }}>
       <Container maxWidth='xl'>
