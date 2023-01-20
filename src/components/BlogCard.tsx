@@ -4,19 +4,26 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
+import type { NextPage } from 'next';
+import type { Blog } from 'src/types/blog';
 
-export default function BlogCard() {
+// Props（blogsとtags）の型
+type Props = {
+  blog: Blog;
+};
+
+const BlogCard: NextPage<Props> = ({ blog }: Props) => {
+  console.log(blog.thumbnail);
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        image={`/images/thumbnails/${blog.thumbnail}`}
+        title="thumbnail"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {blog.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -30,3 +37,5 @@ export default function BlogCard() {
     </Card>
   );
 }
+
+export default BlogCard;
