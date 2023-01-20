@@ -1,7 +1,7 @@
-import { Grid } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 import Footer from '@/components/Footer';
@@ -20,6 +20,7 @@ const profile: NextPage = () => {
           <Grid item>
             <Avatar alt='MyIcon' src={'/images/myIcon.png'} sx={{ width: 250, height: 250 }} />
           </Grid>
+          {/* 名前の項目 */}
           <Grid container direction={'column'} sx={{ width: 'auto'}}>
             <Grid
               container
@@ -45,6 +46,7 @@ const profile: NextPage = () => {
             >
               waml
             </Grid>
+            {/* 経歴の項目 */}
             <Grid
               container
               direction={'row'}
@@ -83,6 +85,7 @@ const profile: NextPage = () => {
               <Grid item>2023.4～</Grid>
               <Grid item>上智大学院進学予定</Grid>
             </Grid>
+            {/* 資格の項目 */}
             <Grid
               container
               direction={'row'}
@@ -134,6 +137,7 @@ const profile: NextPage = () => {
               <Grid item>2022.12</Grid>
               <Grid item>応用情報技術者試験 合格</Grid>
             </Grid>
+            {/* インターンの項目 */}
             <Grid
               container
               direction={'row'}
@@ -175,7 +179,8 @@ const profile: NextPage = () => {
           </Grid>
         </Grid>
       </Container>
-      <Container maxWidth='md' sx={{ backgroundColor: '#D49B7B' }}>
+      {/* 自己紹介のコンテナ */}
+      <Container maxWidth='md' sx={{ backgroundColor: '#D49B7B', minHeight: 300 }}>
         <Box sx={{ fontFamily: 'Kiwi Maru', fontSize: 20, color: 'white' }}>
           <br />
           現在、大学4年生です。資格の勉強やプログラミング、研究関連で備忘録としてアウトプットしたものが役に立てば幸いです。

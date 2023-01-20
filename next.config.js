@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+
+const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    optimizeFonts: true,
-  },
-};
+  // experimental: {
+  //   optimizeFonts: true,
+  // },
+}
+module.exports = nextConfig;
