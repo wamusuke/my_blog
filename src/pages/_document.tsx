@@ -1,7 +1,7 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import theme from 'src/mui/theme';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionCache from 'src/mui/createEmotionCache';
+import theme from 'src/mui/theme';
 
 export default class MyDocument extends Document {
   render() {
@@ -14,6 +14,10 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
           />
           <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap'
+            rel='stylesheet'
+          />
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>
