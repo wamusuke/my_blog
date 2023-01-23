@@ -1,19 +1,30 @@
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Grid
+} from '@mui/material';
 import type { NextPage } from 'next';
-import type { Blog } from 'src/types/blog';
+import type { Blog, Tag } from 'src/types/blog';
 
-// Props（blogsとtags）の型
+// Props（blogs）の型
 type Props = {
   blog: Blog;
+  tags: Tag[];
 };
 
-const BlogCard: NextPage<Props> = ({ blog }: Props) => {
-  console.log(blog.thumbnail);
+function displayTime(time: string) {
+  const timeSplit = time.split("-");
+  return timeSplit[0] + "/" + timeSplit[1] + "/" + timeSplit[2].split("T")[0]
+}
+
+
+const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
+  const tagList = tags.map((tag) => tag.tag)
+  console.log(tagList)
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -26,14 +37,21 @@ const BlogCard: NextPage<Props> = ({ blog }: Props) => {
           {blog.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {blog.content}...
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      <Grid container>
+        <Grid item xs={1.5}><SellOutlinedIcon /></Grid>
+        <Grid item xs={9.5}>
+          {tagList.map((tag) => (
+            `#${tag} `
+          ))}
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs={1.5}><AccessTimeOutlinedIcon /></Grid>
+        <Grid item xs={9.5}>{displayTime(blog.createdAt)}</Grid>
+      </Grid>
     </Card>
   );
 }
