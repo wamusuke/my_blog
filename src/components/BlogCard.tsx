@@ -16,11 +16,19 @@ type Props = {
   tags: Tag[];
 };
 
-function displayTime(time: string) {
-  const timeSplit = time.split("-");
-  return timeSplit[0] + "/" + timeSplit[1] + "/" + timeSplit[2].split("T")[0]
+function displayTime(time: string): string {
+  let timeSplit = time.split("-");
+  return timeSplit[0] + "/" + timeSplit[1] + "/" + timeSplit[2].split("T")[0];
 }
 
+function restrictDisplayOverview(overview: string): string {
+  overview === "string" ? overview : ""
+  if (overview.length >= 42) {
+    return overview.substring(0,42) + "..."
+  } else {
+    return overview
+  }
+}
 
 const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
   const tagList = tags.map((tag) => tag.tag)
@@ -36,8 +44,8 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
         <Typography gutterBottom variant="h5" component="div">
           {blog.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {blog.content}...
+        <Typography gutterBottom variant="body2" component="div" color={"text.secondary"}>
+          {restrictDisplayOverview(typeof blog.overview === "string" ? blog.overview : "")}
         </Typography>
       </CardContent>
       <Grid container>
