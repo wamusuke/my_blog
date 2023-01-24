@@ -21,7 +21,7 @@ const profile: NextPage = () => {
             <Avatar alt='MyIcon' src={'/images/myIcon.png'} sx={{ width: 250, height: 250 }} />
           </Grid>
           {/* 名前の項目 */}
-          <Grid container direction={'column'} sx={{ width: 'auto'}}>
+          <Grid container direction={'column'} sx={{ width: 'auto' }}>
             <Grid
               container
               direction={'row'}
