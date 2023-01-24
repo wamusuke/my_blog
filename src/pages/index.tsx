@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import type { InferGetStaticPropsType, NextPage } from 'next';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import BlogCard from '@/components/BlogCard';
 import Header from '@/components/Header';
 import TagBar from '@/components/TagBar';
@@ -28,8 +28,9 @@ type Props = {
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs, tags }: Props) => {
   const allTagList = Array.from(new Set(tags.map((tag) => tag.tag)));
-  const [selectedTag, setSelectedTag] = useState<string[]>(allTagList);
+  const [selectedBlog, setSelectedBlog] = useState<Blog[]>(blogs);
 
+  console.log(selectedBlog);
   return (
     <>
       <Header />
@@ -44,7 +45,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
               columnSpacing={{ xs: 4 }}
               sx={{ justifyContent: 'center' }}
             >
-              {blogs.map((blog) => (
+              {selectedBlog.map((blog) => (
                 <Grid item lg={4} md={6} sm={8} xs={12} key={blog.id}>
                   <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
                 </Grid>
@@ -56,11 +57,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
         </Grid>
         {/* サイドバー */}
         <Grid item lg={3} md={3} sm={3} xs={12}>
-          <TagBar
-            allTagList={allTagList}
-            selectedTag={selectedTag}
-            setSelectedTag={setSelectedTag}
-          />
+          <TagBar allTagList={allTagList} setSelectedBlog={setSelectedBlog} allBlogs={blogs} />
         </Grid>
       </Grid>
     </>
