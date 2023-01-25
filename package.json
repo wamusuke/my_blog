@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "lint:fix": "yarn lint --fix",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier --write --ignore-path .gitignore '**/*.{js,jsx,ts,tsx,json}'"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -20,12 +20,17 @@
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
+    "cheerio": "^1.0.0-rc.12",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.2",
+    "highlight.js": "^11.7.0",
     "microcms-js-sdk": "^2.3.2",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-share": "^4.4.1",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
     "typescript": "4.9.4"
   },
   "prettier": {
@@ -37,6 +42,8 @@
     "printWidth": 100
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.31",
+    "@types/highlightjs": "^9.12.2",
     "eslint-config-prettier": "8.6.0",
     "prettier": "2.8.3"
   }

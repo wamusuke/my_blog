@@ -6,11 +6,11 @@ import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { bgColor } from '@/libs/color';
 
 const profile: NextPage = () => {
-  // console.log(window.innerHeight);
   return (
-    <>
+    <Box sx={{ backgroundColor: bgColor }}>
       <Header />
       <Container maxWidth='md' sx={{ backgroundColor: '#D49B7B' }}>
         <Typography variant='h3' sx={{ fontFamily: 'cursive', color: 'white' }}>
@@ -21,7 +21,7 @@ const profile: NextPage = () => {
             <Avatar alt='MyIcon' src={'/images/myIcon.png'} sx={{ width: 250, height: 250 }} />
           </Grid>
           {/* 名前の項目 */}
-          <Grid container direction={'column'} sx={{ width: 'auto'}}>
+          <Grid container direction={'column'} sx={{ width: 'auto' }}>
             <Grid
               container
               direction={'row'}
@@ -188,7 +188,7 @@ const profile: NextPage = () => {
         {/* ここにGoogle Adsense入れる */}
       </Container>
       <Footer />
-    </>
+    </Box>
   );
 };
 
