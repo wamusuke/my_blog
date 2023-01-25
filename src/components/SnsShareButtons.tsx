@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import { useState, useEffect } from 'react';
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -8,8 +9,11 @@ import {
   LineShareButton,
 } from 'react-share';
 
-
 const SnsShareButtons = () => {
+  const [currentURL, setCurrentURL] = useState<string>('');
+  useEffect(() => {
+    setCurrentURL(location.href);
+  }, []);
   return (
     <Box
       sx={{
@@ -17,18 +21,13 @@ const SnsShareButtons = () => {
         flexDirection: 'column',
       }}
     >
-      <FacebookShareButton url={""} title={'Facebook'}>
+      <FacebookShareButton url={currentURL} title={'Facebook'}>
         <FacebookIcon size={50} round />
       </FacebookShareButton>
-      <TwitterShareButton
-        url={""}
-        title={'Twitter'}
-        via='waml'
-        hashtags={["waml'sblog"]}
-      >
+      <TwitterShareButton url={currentURL} title={'Twitter'} via='waml' hashtags={["waml'sblog"]}>
         <TwitterIcon size={50} round />
       </TwitterShareButton>
-      <LineShareButton url={""} title={'Line'}>
+      <LineShareButton url={currentURL} title={'Line'}>
         <LineIcon size={50} round />
       </LineShareButton>
     </Box>

@@ -2,7 +2,6 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { IconButton } from '@mui/material';
 import { Popup } from 'semantic-ui-react';
 
-
 function copyTextToClipboard(text: string) {
   navigator.clipboard.writeText(text).then(
     function () {
