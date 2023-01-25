@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 
 const Header: NextPage = () => {
   return (
-    <AppBar position='static' sx={{ backgroundColor: '#7BA2D4' }}>
+    <AppBar position='static' sx={{ backgroundColor: '#7BA2D4' }} elevation={0}>
       <Container maxWidth='xl'>
         <Toolbar disableGutters={false}>
           <Typography

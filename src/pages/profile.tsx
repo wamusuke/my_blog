@@ -6,10 +6,11 @@ import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { bgColor } from '@/libs/color';
 
 const profile: NextPage = () => {
   return (
-    <Box sx={{ backgroundColor: '#F0FFFF' }}>
+    <Box sx={{ backgroundColor: bgColor }}>
       <Header />
       <Container maxWidth='md' sx={{ backgroundColor: '#D49B7B' }}>
         <Typography variant='h3' sx={{ fontFamily: 'cursive', color: 'white' }}>

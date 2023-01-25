@@ -1,11 +1,12 @@
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import type { InferGetStaticPropsType, NextPage } from 'next';
 import BlogCard from '@/components/BlogCard';
-import { useState } from 'react';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 import Footer from '@/components/Footer';
+import { useState } from 'react';
 import Header from '@/components/Header';
 import TagBar from '@/components/TagBar';
+import { bgColor } from '@/libs/color';
 import { client } from 'src/libs/client';
 import type { Blog, Tag } from 'src/types/blog';
 
@@ -33,7 +34,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
   const [selectedBlog, setSelectedBlog] = useState<Blog[]>(blogs);
 
   return (
-    <Box sx={{ backgroundColor: '#F0FFFF' }}>
+    <Box sx={{ backgroundColor: bgColor }}>
       <Header />
       <Grid container>
         <Grid item container lg={9} md={9} sm={9} xs={12}>

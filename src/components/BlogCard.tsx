@@ -37,7 +37,7 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
             {restrictDisplayTitle(blog.title)}
           </Typography>
         </CardContent>
-        <Grid container sx={{ height: 50 }}>
+        <Grid container sx={{ height: 50, marginTop: 0.5 }}>
           <Grid item xs={1.5}>
             <SellOutlinedIcon />
           </Grid>

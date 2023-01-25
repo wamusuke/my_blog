@@ -1,7 +1,10 @@
 import { ParsedUrlQuery } from 'node:querystring';
-import { Grid } from '@mui/material';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import { Grid, Box, Paper } from '@mui/material';
 import cheerio from 'cheerio';
+import Footer from '@/components/Footer';
 import hljs from 'highlight.js';
+import Header from '@/components/Header';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -10,8 +13,8 @@ import {
   GetStaticPropsContext,
   PreviewData,
 } from 'next';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import { bgColor } from '@/libs/color';
+import Image from 'next/image';
 import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
 import type { Blog } from 'src/types/blog';
@@ -67,22 +70,48 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <>
       <Header />
       <Grid container>
-        <Grid item lg={2} md={2} sm={2} xs={2}>
+        {/* 左側 */}
+        <Grid item lg={2} md={2} sm={2} xs={2} sx={{ backgroundColor: bgColor }}>
+          {/* SNSシェアボタン追従 */}
           left
         </Grid>
+        {/* 中央 */}
         <Grid item lg={8} md={8} sm={10} xs={10}>
+          <center>
+            <div style={{ position: 'relative', width: '500px', height: '300px' }}>
+              <Image src={`/images/thumbnails/${blog.thumbnail}`} fill alt={`${blog.thumbnail}`} />
+            </div>
+          </center>
           <h1>{blog.title}</h1>
-          <p>{displayTime(blog.publishedAt)}</p>
-          {blog.tags.map((tag) => (
-            <li key={tag.id}>#{tag.tag}</li>
-          ))}
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              bgcolor: 'background.paper',
+              height: 70,
+              borderRadius: 1,
+            }}
+          >
+            {blog.tags.map((tag) => (
+              <Paper key={tag.tag} sx={{ margin: 1, padding: 1 }}>
+                # {tag.tag}
+              </Paper>
+            ))}
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', color: '#7C7D7F' }}>
+            <AccessTimeOutlinedIcon sx={{ margin: 0.5 }} />
+            <Box sx={{ margin: 0.5 }}>{displayTime(blog.createdAt)}</Box>
+          </Box>
+          {/* Microcmsからブログ記事を受け取る */}
           <div
             dangerouslySetInnerHTML={{
               __html: highlightedBody,
             }}
           />
         </Grid>
-        <Grid item lg={2} md={2} sm={12} xs={12}>
+        {/* 右側 */}
+        <Grid item lg={2} md={2} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>
+          {/* 広告と関連記事入れる */}
           right
         </Grid>
       </Grid>

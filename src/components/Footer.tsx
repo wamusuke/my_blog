@@ -17,7 +17,7 @@ const Footer: NextPage = () => {
   return (
     <Box sx={FooterStyle}>
       <center>
-        <Box sx={{ fontFamily: 'cursive', fontSize: 16 }}>@ 2023 waml&apos;s blog</Box>
+        <Box sx={{ fontFamily: 'cursive', fontSize: 16 }}>@waml&apos;s blog</Box>
       </center>
     </Box>
   );
