@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from 'node:querystring';
+import { Grid } from '@mui/material';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import {
@@ -9,6 +10,7 @@ import {
   GetStaticPropsContext,
   PreviewData,
 } from 'next';
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
@@ -64,16 +66,27 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <Header />
-      <h1>{blog.title}</h1>
-      <p>{displayTime(blog.publishedAt)}</p>
-      {blog.tags.map((tag) => (
-        <li key={tag.id}>#{tag.tag}</li>
-      ))}
-      <div
-        dangerouslySetInnerHTML={{
-          __html: highlightedBody,
-        }}
-      />
+      <Grid container>
+        <Grid item lg={2} md={2} sm={2} xs={2}>
+          left
+        </Grid>
+        <Grid item lg={8} md={8} sm={10} xs={10}>
+          <h1>{blog.title}</h1>
+          <p>{displayTime(blog.publishedAt)}</p>
+          {blog.tags.map((tag) => (
+            <li key={tag.id}>#{tag.tag}</li>
+          ))}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: highlightedBody,
+            }}
+          />
+        </Grid>
+        <Grid item lg={2} md={2} sm={12} xs={12}>
+          right
+        </Grid>
+      </Grid>
+      <Footer />
     </>
   );
 };
