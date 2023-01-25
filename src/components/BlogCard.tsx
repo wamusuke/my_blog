@@ -37,7 +37,7 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
             {restrictDisplayTitle(blog.title)}
           </Typography>
         </CardContent>
-        <Grid container sx={{ height: 50, marginTop: 0.5 }}>
+        <Grid container sx={{ height: 'auto', margin: 1 }}>
           <Grid item xs={1.5}>
             <SellOutlinedIcon />
           </Grid>
@@ -45,7 +45,7 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
             {tagList.map((tag) => `#${tag} `)}
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container sx={{ margin: 1 }}>
           <Grid item xs={1.5}>
             <AccessTimeOutlinedIcon />
           </Grid>

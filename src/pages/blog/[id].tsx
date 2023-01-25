@@ -1,10 +1,12 @@
 import { ParsedUrlQuery } from 'node:querystring';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import CopyClipboardButton from '@/components/CopyClipboardButton';
 import { Grid, Box, Paper } from '@mui/material';
-import cheerio from 'cheerio';
 import Footer from '@/components/Footer';
-import hljs from 'highlight.js';
+import cheerio from 'cheerio';
 import Header from '@/components/Header';
+import hljs from 'highlight.js';
+import SnsShareButtons from '@/components/SnsShareButtons';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -73,7 +75,12 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         {/* 左側 */}
         <Grid item lg={2} md={2} sm={2} xs={2} sx={{ backgroundColor: bgColor }}>
           {/* SNSシェアボタン追従 */}
-          left
+          <Box sx={{ position: 'sticky', top: '20%' }}>
+            <center>
+              <SnsShareButtons />
+              <CopyClipboardButton />
+            </center>
+          </Box>
         </Grid>
         {/* 中央 */}
         <Grid item lg={8} md={8} sm={10} xs={10}>
@@ -87,7 +94,6 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             sx={{
               display: 'flex',
               alignItems: 'flex-start',
-              bgcolor: 'background.paper',
               height: 70,
               borderRadius: 1,
             }}
