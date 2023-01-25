@@ -1,7 +1,9 @@
+import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import type { InferGetStaticPropsType, NextPage } from 'next';
-import { useState, useRef } from 'react';
 import BlogCard from '@/components/BlogCard';
+import { useState } from 'react';
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import TagBar from '@/components/TagBar';
 import { client } from 'src/libs/client';
@@ -30,21 +32,14 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
   const allTagList = Array.from(new Set(tags.map((tag) => tag.tag)));
   const [selectedBlog, setSelectedBlog] = useState<Blog[]>(blogs);
 
-  console.log(selectedBlog);
   return (
-    <>
+    <Box sx={{ backgroundColor: '#F0FFFF' }}>
       <Header />
       <Grid container>
         <Grid item container lg={9} md={9} sm={9} xs={12}>
           <Grid item container sx={{ marginTop: 3, marginLeft: 3 }}>
             {/* 記事の一覧 */}
-            <Grid
-              container
-              item
-              rowSpacing={4}
-              columnSpacing={{ xs: 4 }}
-              sx={{ justifyContent: 'center' }}
-            >
+            <Grid container item rowSpacing={4} columnSpacing={{ xs: 4 }}>
               {selectedBlog.map((blog) => (
                 <Grid item lg={4} md={6} sm={8} xs={12} key={blog.id}>
                   <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
@@ -56,11 +51,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
           </Grid>
         </Grid>
         {/* サイドバー */}
-        <Grid item lg={3} md={3} sm={3} xs={12}>
+        <Grid item lg={3} md={3} sm={3} xs={12} sx={{ marginTop: 3 }}>
           <TagBar allTagList={allTagList} setSelectedBlog={setSelectedBlog} allBlogs={blogs} />
         </Grid>
       </Grid>
-    </>
+      <Footer />
+    </Box>
   );
 };
 

@@ -8,9 +8,8 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 const profile: NextPage = () => {
-  // console.log(window.innerHeight);
   return (
-    <>
+    <Box sx={{ backgroundColor: '#F0FFFF' }}>
       <Header />
       <Container maxWidth='md' sx={{ backgroundColor: '#D49B7B' }}>
         <Typography variant='h3' sx={{ fontFamily: 'cursive', color: 'white' }}>
@@ -188,7 +187,7 @@ const profile: NextPage = () => {
         {/* ここにGoogle Adsense入れる */}
       </Container>
       <Footer />
-    </>
+    </Box>
   );
 };
 
