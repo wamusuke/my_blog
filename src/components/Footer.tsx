@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
 import { NextPage } from 'next';
-import * as React from 'react';
 
 const FooterStyle = {
   backgroundColor: '#494949',

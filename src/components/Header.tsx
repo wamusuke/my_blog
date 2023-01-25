@@ -1,13 +1,6 @@
 import ImportantDevicesIcon from '@mui/icons-material/ImportantDevices';
-import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import { AppBar, Avatar, Box, Container, IconButton, Toolbar, Typography } from '@mui/material';
 import { NextPage } from 'next';
-import * as React from 'react';
 
 const Header: NextPage = () => {
   return (

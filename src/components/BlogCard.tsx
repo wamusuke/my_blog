@@ -3,6 +3,7 @@ import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import type { NextPage } from 'next';
 import Link from 'next/link';
+import { displayTime, restrictDisplayTitle } from '@/libs/display';
 import type { Blog, Tag } from 'src/types/blog';
 
 // Props（blogs）の型
@@ -10,19 +11,6 @@ type Props = {
   blog: Blog;
   tags: Tag[];
 };
-
-function displayTime(time: string): string {
-  let timeSplit = time.split('-');
-  return timeSplit[0] + '/' + timeSplit[1] + '/' + timeSplit[2].split('T')[0];
-}
-
-function restrictDisplayTitle(title: string): string {
-  if (title.length >= 35) {
-    return title.substring(0, 35) + '...';
-  } else {
-    return title;
-  }
-}
 
 const CardStyle = {
   maxWidth: 345,
