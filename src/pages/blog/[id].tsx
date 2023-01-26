@@ -1,7 +1,7 @@
 import { ParsedUrlQuery } from 'node:querystring';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
-import { Grid, Box, Paper } from '@mui/material';
+import { Grid, Box, Paper, Typography } from '@mui/material';
 import Footer from '@/components/Footer';
 import cheerio from 'cheerio';
 import Header from '@/components/Header';
@@ -89,7 +89,9 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               <Image src={`/images/thumbnails/${blog.thumbnail}`} fill alt={`${blog.thumbnail}`} />
             </div>
           </center>
-          <h1>{blog.title}</h1>
+          <Typography sx={{ fontFamily: 'Kiwi Maru' }}>
+            <h1>{blog.title}</h1>
+          </Typography>
           <Box
             sx={{
               display: 'flex',
@@ -99,14 +101,14 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             }}
           >
             {blog.tags.map((tag) => (
-              <Paper key={tag.tag} sx={{ margin: 1, padding: 1 }}>
+              <Paper key={tag.tag} sx={{ margin: 1, padding: 1, fontFamily: 'Kiwi Maru' }}>
                 # {tag.tag}
               </Paper>
             ))}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'flex-start', color: '#7C7D7F' }}>
             <AccessTimeOutlinedIcon sx={{ margin: 0.5 }} />
-            <Box sx={{ margin: 0.5 }}>{displayTime(blog.createdAt)}</Box>
+            <Box sx={{ margin: 0.5, fontFamily: 'Kiwi Maru' }}>{displayTime(blog.createdAt)}</Box>
           </Box>
           {/* Microcmsからブログ記事を受け取る */}
           <div

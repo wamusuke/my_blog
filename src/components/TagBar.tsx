@@ -45,6 +45,7 @@ const TagBar: NextPage<Props> = ({ allTagList, setSelectedBlog, allBlogs }: Prop
               fontSize: 18,
               color: '#444',
               borderBottom: 'solid 0.7px #888',
+              fontFamily: 'cursive',
             }}
           >
             # Tags
@@ -62,6 +63,7 @@ const TagBar: NextPage<Props> = ({ allTagList, setSelectedBlog, allBlogs }: Prop
             primary='All'
             primaryTypographyProps={{
               fontSize: 15,
+              fontFamily: 'Kiwi Maru',
             }}
           />
         </ListItemButton>
@@ -77,6 +79,7 @@ const TagBar: NextPage<Props> = ({ allTagList, setSelectedBlog, allBlogs }: Prop
               primary={tag}
               primaryTypographyProps={{
                 fontSize: 15,
+                fontFamily: 'Kiwi Maru',
               }}
             />
           </ListItemButton>

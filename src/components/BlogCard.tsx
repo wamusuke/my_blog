@@ -33,7 +33,12 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
           title='thumbnail'
         />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='div' sx={{ height: 100 }}>
+          <Typography
+            gutterBottom
+            variant='h5'
+            component='div'
+            sx={{ height: 100, fontFamily: 'Kiwi Maru' }}
+          >
             {restrictDisplayTitle(blog.title)}
           </Typography>
         </CardContent>
@@ -42,7 +47,9 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
             <SellOutlinedIcon />
           </Grid>
           <Grid item xs={9.5}>
-            {tagList.map((tag) => `#${tag} `)}
+            {tagList.map((tag) => (
+              <Typography sx={{ fontFamily: 'Kiwi Maru' }}>{`#${tag} `}</Typography>
+            ))}
           </Grid>
         </Grid>
         <Grid container sx={{ margin: 1 }}>
@@ -50,7 +57,7 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
             <AccessTimeOutlinedIcon />
           </Grid>
           <Grid item xs={9.5}>
-            {displayTime(blog.createdAt)}
+            <Typography sx={{fontFamily: 'Kiwi Maru'}}>{displayTime(blog.createdAt)}</Typography>
           </Grid>
         </Grid>
       </Card>
