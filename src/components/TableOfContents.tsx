@@ -14,7 +14,7 @@ const TableOfContents = () => {
   }, []);
 
   return (
-    <Grid xs={10} sx={{ margin: 'auto', marginTop: 1 }}>
+    <Grid xs={10} sx={{ margin: 'auto' }}>
       <Paper>
         <Box sx={{
           display: 'flex',

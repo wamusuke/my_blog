@@ -126,7 +126,9 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         {/* 右側 */}
         <Grid item lg={2} md={2} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>
           {/* 広告と関連記事入れる */}
-          <TableOfContents />
+          <Box sx={{ position: 'sticky', top: '10%' }}>
+            <TableOfContents />
+          </Box>
         </Grid>
       </Grid>
       <Footer />
