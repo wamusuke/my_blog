@@ -2,6 +2,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionCache from 'src/mui/createEmotionCache';
 import theme from 'src/mui/theme';
+import { GA_TRACKING_ID } from 'src/libs/gtag';
 
 export default class MyDocument extends Document {
   render() {
@@ -30,6 +31,24 @@ export default class MyDocument extends Document {
             type="image/png"
             href="images/myIcon.png"
           />
+          {/* // GA_TRACKING_ID が設定されていない場合は、なし */}
+          {GA_TRACKING_ID && (
+            <>
+              <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+        `,
+                }}
+              />
+            </>
+          )}
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>
