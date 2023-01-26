@@ -15,17 +15,16 @@ export const getStaticProps = async () => {
   const all_blog = await client.get({ endpoint: 'blogs' });
   const tag = await client.get({ endpoint: 'tags' });
 
-  function isDevBlog(content: any) {
-    return content.is_dev;
-  }
   let dev_blog: any;
-  // 開発環境デモ用処理
-  if (process.env.NEXT_PUBLIC_IS_DEV) {
-    dev_blog = all_blog.contents.filter(isDevBlog);
-  } else {
-    dev_blog = all_blog.contents.filter(!isDevBlog);
-  }
 
+  // 本番環境用
+  if (process.env.NODE_ENV == "production") {
+    dev_blog = all_blog.contents.filter((content: any) => !content.is_dev);
+  }
+  // 開発環境デモ用処理
+  else {
+    dev_blog = all_blog.contents.filter((content: any) => content.is_dev);
+  }
   return {
     props: {
       blogs: dev_blog,
