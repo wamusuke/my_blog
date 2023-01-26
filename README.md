@@ -3,6 +3,13 @@
 * Next.js + TypeScript
 * Netlify
 
+## deployURL
+環境変数をちゃんとnetlify側でも設定する(なぜか1回目は失敗した，変更せずに2回目デプロイで成功)
+https://wa-ml.netlify.app/
+
+siteを消す場合以下リンクで消す
+https://app.netlify.com/sites/wa-ml/settings/general
+
 ## 起動
 
 ```
