@@ -24,6 +24,12 @@ export default class MyDocument extends Document {
             rel='stylesheet'
             href='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css'
           />
+          {/* ファビコンの追加 */}
+          <link
+            rel="icon"
+            type="image/png"
+            href="images/myIcon.png"
+          />
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>
