@@ -1,6 +1,7 @@
 ## 技術スタック
 * JamStack(コンテンツサーバをmicrocmsで立てる)
 * Next.js + TypeScript
+* Netlify
 
 ## 起動
 
@@ -8,7 +9,7 @@
 yarn dev
 ```
 
-## linter check
+## linter and formatter check
 
 ```
 yarn lint
@@ -16,7 +17,7 @@ yarn lint:fix
 yarn format
 ```
 
-## 本番環境
+## 本番環境確認
 ```
 yarn build
 yarn start
@@ -41,6 +42,7 @@ API_KEY=xxxxxxxxxxxx
 
 ```
 process.env.API_KEY
+process.env.SERVICE_DOMAIN
 ```
 
 ### deployはNetlify使う予定
@@ -50,3 +52,18 @@ process.env.API_KEY
 金額のドキュメントは[こちら](https://docs.netlify.com/accounts-and-billing/billing-faq/)
 
 * 無料でやり切るには請求が近づくとメールがくるのでbuild停止する.
+
+### 広告つけるかどうか
+* Google Adsense
+  * 無料ドメインではできない
+
+* A8.net
+  * アフィリエイト広告,審査がないから始めやすそう
+
+* Amazonアソシエイト
+  * 審査があるぽい，技術ブログなら相性良さげ
+
+* アクセストレード
+
+* 楽天アフィリエイト
+
