@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
   let dev_blog: any;
 
   // 本番環境用
-  if (process.env.NODE_ENV == "production") {
+  if (process.env.NODE_ENV == 'production') {
     dev_blog = all_blog.contents.filter((content: any) => !content.is_dev);
   }
   // 開発環境デモ用処理

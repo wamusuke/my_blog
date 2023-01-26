@@ -1,8 +1,8 @@
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { GA_TRACKING_ID } from 'src/libs/gtag';
 import createEmotionCache from 'src/mui/createEmotionCache';
 import theme from 'src/mui/theme';
-import { GA_TRACKING_ID } from 'src/libs/gtag';
 
 export default class MyDocument extends Document {
   render() {
@@ -26,11 +26,7 @@ export default class MyDocument extends Document {
             href='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css'
           />
           {/* ファビコンの追加 */}
-          <link
-            rel="icon"
-            type="image/png"
-            href="images/myIcon.png"
-          />
+          <link rel='icon' type='image/png' href='images/myIcon.png' />
           {/* // GA_TRACKING_ID が設定されていない場合は、なし */}
           {GA_TRACKING_ID && (
             <>

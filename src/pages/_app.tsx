@@ -3,11 +3,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import createEmotionCache from 'src/mui/createEmotionCache';
-import theme from 'src/mui/theme';
 import { GA_TRACKING_ID, pageview } from 'src/libs/gtag';
 import { useRouter } from 'next/router';
+import createEmotionCache from 'src/mui/createEmotionCache';
 import { useEffect } from 'react';
+import theme from 'src/mui/theme';
 
 const clientSideEmotionCache = createEmotionCache();
 interface MyAppProps extends AppProps {
@@ -30,7 +30,6 @@ function MyApp(props: MyAppProps) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
-
 
   return (
     <CacheProvider value={emotionCache}>
