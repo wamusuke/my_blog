@@ -25,12 +25,14 @@ yarn start
 
 ## env ファイルを作成
 
-### .env.development.local.sample の sample を外す(yarn devで読み込まれる)
+### .env.sample の sample を外す(yarn devで読み込まれる)
 
 ```
 SERVICE_DOMAIN=xxxxxxxxxxx
 API_KEY=xxxxxxxxxxxx
 ```
+
+* .env.local, .env.production, .env.development, .env.development.local, .env.production.localを適宜必要なら作成する．
 
 ※サービスドメインは、例えば自分の microCMS ページの URL が https://abc.microcms.io/ であれば abc の部分になります。
 
