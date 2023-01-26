@@ -48,7 +48,7 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
           </Grid>
           <Grid item xs={9.5}>
             {tagList.map((tag) => (
-              <Typography sx={{ fontFamily: 'Kiwi Maru' }}>{`#${tag} `}</Typography>
+              <Typography key={tag} sx={{ fontFamily: 'Kiwi Maru' }}>{`#${tag} `}</Typography>
             ))}
           </Grid>
         </Grid>
@@ -57,7 +57,7 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
             <AccessTimeOutlinedIcon />
           </Grid>
           <Grid item xs={9.5}>
-            <Typography sx={{fontFamily: 'Kiwi Maru'}}>{displayTime(blog.createdAt)}</Typography>
+            <Typography sx={{ fontFamily: 'Kiwi Maru' }}>{displayTime(blog.createdAt)}</Typography>
           </Grid>
         </Grid>
       </Card>
