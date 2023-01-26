@@ -14,10 +14,13 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
           />
           <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+          {/* googleフォントの追加 */}
           <link
             href='https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap'
             rel='stylesheet'
           />
+          {/* 目次のtocbot用cssの追加 */}
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" />
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>

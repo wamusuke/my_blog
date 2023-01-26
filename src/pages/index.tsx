@@ -12,12 +12,23 @@ import type { Blog, Tag } from 'src/types/blog';
 
 // microCMSへAPIリクエスト
 export const getStaticProps = async () => {
-  const blog = await client.get({ endpoint: 'blogs' });
+  const all_blog = await client.get({ endpoint: 'blogs' });
   const tag = await client.get({ endpoint: 'tags' });
+
+  function isDevBlog(content: any) {
+    return content.is_dev;
+  }
+  let dev_blog: any;
+  // 開発環境デモ用処理
+  if (process.env.NEXT_PUBLIC_IS_DEV) {
+    dev_blog = all_blog.contents.filter(isDevBlog);
+  } else {
+    dev_blog = all_blog.contents.filter(!isDevBlog);
+  }
 
   return {
     props: {
-      blogs: blog.contents,
+      blogs: dev_blog,
       tags: tag.contents,
     },
   };
@@ -32,7 +43,6 @@ type Props = {
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs, tags }: Props) => {
   const allTagList = Array.from(new Set(tags.map((tag) => tag.tag)));
   const [selectedBlog, setSelectedBlog] = useState<Blog[]>(blogs);
-
   return (
     <Box sx={{ backgroundColor: bgColor }}>
       <Header />

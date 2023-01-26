@@ -1,12 +1,13 @@
 import { ParsedUrlQuery } from 'node:querystring';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
-import { Grid, Box, Paper } from '@mui/material';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import Footer from '@/components/Footer';
-import cheerio from 'cheerio';
+import { Grid, Box, Paper, Typography } from '@mui/material';
 import Header from '@/components/Header';
-import hljs from 'highlight.js';
+import cheerio from 'cheerio';
 import SnsShareButtons from '@/components/SnsShareButtons';
+import hljs from 'highlight.js';
+import TableOfContents from '@/components/TableOfContents';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -89,36 +90,45 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               <Image src={`/images/thumbnails/${blog.thumbnail}`} fill alt={`${blog.thumbnail}`} />
             </div>
           </center>
-          <h1>{blog.title}</h1>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              height: 70,
-              borderRadius: 1,
-            }}
-          >
-            {blog.tags.map((tag) => (
-              <Paper key={tag.tag} sx={{ margin: 1, padding: 1 }}>
-                # {tag.tag}
-              </Paper>
-            ))}
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'flex-start', color: '#7C7D7F' }}>
-            <AccessTimeOutlinedIcon sx={{ margin: 0.5 }} />
-            <Box sx={{ margin: 0.5 }}>{displayTime(blog.createdAt)}</Box>
-          </Box>
-          {/* Microcmsからブログ記事を受け取る */}
-          <div
-            dangerouslySetInnerHTML={{
-              __html: highlightedBody,
-            }}
-          />
+          <Grid xs={10} sx={{ margin: 'auto' }}>
+            <Typography sx={{ fontFamily: 'Kiwi Maru' }}>
+              <h1>{blog.title}</h1>
+            </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                height: 70,
+                borderRadius: 1,
+              }}
+            >
+              {blog.tags.map((tag) => (
+                <Paper key={tag.tag} sx={{ margin: 1, padding: 1, fontFamily: 'Kiwi Maru' }}>
+                  # {tag.tag}
+                </Paper>
+              ))}
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', color: '#7C7D7F' }}>
+              <AccessTimeOutlinedIcon sx={{ margin: 0.5 }} />
+              <Box sx={{ margin: 0.5, fontFamily: 'Kiwi Maru' }}>{displayTime(blog.createdAt)}</Box>
+            </Box>
+            {/* Microcmsからブログ記事を受け取る */}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: highlightedBody,
+              }}
+              className={'article'}
+              style={{ fontFamily: "Kiwi Maru" }}
+            />
+          </Grid>
+
         </Grid>
         {/* 右側 */}
         <Grid item lg={2} md={2} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>
           {/* 広告と関連記事入れる */}
-          right
+          <Box sx={{ position: 'sticky', top: '10%' }}>
+            <TableOfContents />
+          </Box>
         </Grid>
       </Grid>
       <Footer />
