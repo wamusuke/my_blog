@@ -16,33 +16,37 @@ const TableOfContents = () => {
   return (
     <Grid xs={10} sx={{ margin: 'auto' }}>
       <Paper>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'row'
-        }}>
-          <Typography sx={{ margin: 1 }}><MenuBookOutlined /></Typography>
-          <Typography sx={{ fontFamily: "Kiwi Maru", margin: 1 }}>目次</Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
+          <Typography sx={{ margin: 1 }}>
+            <MenuBookOutlined />
+          </Typography>
+          <Typography sx={{ fontFamily: 'Kiwi Maru', margin: 1 }}>目次</Typography>
         </Box>
         <div className='toc'></div>
 
         <style jsx global>{`
-        .toc {
-          padding: 1rem;
-          font-family: Kiwi Maru;
-        }
+          .toc {
+            padding: 1rem;
+            font-family: Kiwi Maru;
+          }
 
-        .toc-list .toc-list {
-        }
+          .toc-list .toc-list {
+          }
 
-        .toc-list-item {
-          padding-bottom: 0.5rem;
-        }
+          .toc-list-item {
+            padding-bottom: 0.5rem;
+          }
 
-        .toc-list-item:last-child {
-        }
-        .is-active-link {
-        }
-      `}</style>
+          .toc-list-item:last-child {
+          }
+          .is-active-link {
+          }
+        `}</style>
       </Paper>
     </Grid>
   );

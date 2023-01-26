@@ -118,10 +118,9 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 __html: highlightedBody,
               }}
               className={'article'}
-              style={{ fontFamily: "Kiwi Maru" }}
+              style={{ fontFamily: 'Kiwi Maru' }}
             />
           </Grid>
-
         </Grid>
         {/* 右側 */}
         <Grid item lg={2} md={2} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>

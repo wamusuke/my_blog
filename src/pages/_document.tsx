@@ -20,7 +20,10 @@ export default class MyDocument extends Document {
             rel='stylesheet'
           />
           {/* 目次のtocbot用cssの追加 */}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" />
+          <link
+            rel='stylesheet'
+            href='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css'
+          />
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>
