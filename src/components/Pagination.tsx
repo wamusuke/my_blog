@@ -15,6 +15,6 @@ export default function PaginationControlled({ page, setPage, totalItemSize, siz
   };
 
   return (
-    <Pagination count={maxPage} page={page} onChange={handleChange} />
+    <Pagination count={maxPage} page={page} onChange={handleChange} color="primary" />
   );
 }
