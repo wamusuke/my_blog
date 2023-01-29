@@ -1,15 +1,15 @@
 import { Box } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import BlogCard from '@/components/BlogCard';
-import type { InferGetStaticPropsType, NextPage } from 'next';
+import Grid from '@mui/material/Grid';
 import Footer from '@/components/Footer';
-import { useEffect, useState } from 'react';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 import Header from '@/components/Header';
+import { useEffect, useState } from 'react';
+import PaginationControlled from '@/components/Pagination';
 import TagBar from '@/components/TagBar';
 import { bgColor } from '@/libs/color';
 import { client } from 'src/libs/client';
 import type { Blog, Tag } from 'src/types/blog';
-import PaginationControlled from '@/components/Pagination';
 
 // microCMSへAPIリクエスト
 export const getStaticProps = async () => {
@@ -45,8 +45,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
   const [selectedBlog, setSelectedBlog] = useState<Blog[]>(blogs);
   // paginationのページ
   const [page, setPage] = useState<number>(1);
-  const perPage = 3;
-
+  const perPage = 9;
 
   return (
     <Box sx={{ backgroundColor: bgColor }}>
@@ -64,7 +63,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
               ))}
             </Grid>
             <Grid xs={12} sx={{ marginTop: 10 }}>
-              <PaginationControlled page={page} setPage={setPage} totalItemSize={selectedBlog.length} sizePerPage={perPage} />
+              <PaginationControlled
+                page={page}
+                setPage={setPage}
+                totalItemSize={selectedBlog.length}
+                sizePerPage={perPage}
+              />
             </Grid>
           </Grid>
         </Grid>
