@@ -1,10 +1,11 @@
 import { Box } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import BlogCard from '@/components/BlogCard';
-import type { InferGetStaticPropsType, NextPage } from 'next';
+import Grid from '@mui/material/Grid';
 import Footer from '@/components/Footer';
-import { useState } from 'react';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 import Header from '@/components/Header';
+import { useEffect, useState } from 'react';
+import PaginationControlled from '@/components/Pagination';
 import TagBar from '@/components/TagBar';
 import { bgColor } from '@/libs/color';
 import { client } from 'src/libs/client';
@@ -42,26 +43,37 @@ type Props = {
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs, tags }: Props) => {
   const allTagList = Array.from(new Set(tags.map((tag) => tag.tag)));
   const [selectedBlog, setSelectedBlog] = useState<Blog[]>(blogs);
+  // paginationのページ
+  const [page, setPage] = useState<number>(1);
+  const perPage = 9;
+
   return (
     <Box sx={{ backgroundColor: bgColor }}>
       <Header />
       <Grid container>
-        <Grid item container lg={9} md={9} sm={9} xs={12}>
-          <Grid item container sx={{ marginTop: 3, marginLeft: 3 }}>
+        <Grid item={true} container lg={9} md={9} sm={9} xs={12}>
+          <Grid item={true} container sx={{ marginTop: 3, marginLeft: 3 }}>
             {/* 記事の一覧 */}
-            <Grid container item rowSpacing={4} columnSpacing={{ xs: 4 }}>
-              {selectedBlog.map((blog) => (
-                <Grid item lg={4} md={6} sm={8} xs={12} key={blog.id}>
+            {!selectedBlog.length && <p>現在記事作成中です...</p>}
+            <Grid container item={true} rowSpacing={4} columnSpacing={{ xs: 4 }}>
+              {selectedBlog.slice(page, page + perPage).map((blog) => (
+                <Grid item={true} lg={4} md={6} sm={8} xs={12} key={blog.id}>
                   <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
                 </Grid>
               ))}
             </Grid>
-            {/* 記事とサイドバーの余白 */}
-            <Grid item xs={0} sm={0.5} />
+            <Grid xs={12} sx={{ marginTop: 10 }}>
+              <PaginationControlled
+                page={page}
+                setPage={setPage}
+                totalItemSize={selectedBlog.length}
+                sizePerPage={perPage}
+              />
+            </Grid>
           </Grid>
         </Grid>
         {/* サイドバー */}
-        <Grid item lg={3} md={3} sm={3} xs={12} sx={{ marginTop: 3 }}>
+        <Grid item={true} lg={3} md={3} sm={3} xs={12} sx={{ marginTop: 3 }}>
           <TagBar allTagList={allTagList} setSelectedBlog={setSelectedBlog} allBlogs={blogs} />
         </Grid>
       </Grid>
