@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Footer from '@/components/Footer';
 import type { InferGetStaticPropsType, NextPage } from 'next';
 import Header from '@/components/Header';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PaginationControlled from '@/components/Pagination';
 import TagBar from '@/components/TagBar';
 import { bgColor } from '@/libs/color';
@@ -56,7 +56,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
             {/* 記事の一覧 */}
             {!selectedBlog.length && <p>現在記事作成中です...</p>}
             <Grid container item={true} rowSpacing={4} columnSpacing={{ xs: 4 }}>
-              {selectedBlog.slice(page, page + perPage).map((blog) => (
+              {selectedBlog.slice((page - 1) * perPage, Math.min((page - 1) * perPage + perPage, selectedBlog.length)).map((blog) => (
                 <Grid item={true} lg={4} md={6} sm={8} xs={12} key={blog.id}>
                   <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
                 </Grid>
