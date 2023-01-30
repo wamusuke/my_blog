@@ -17,7 +17,6 @@ import {
   PreviewData,
 } from 'next';
 import { bgColor } from '@/libs/color';
-import Image from 'next/image';
 import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
 import type { Blog } from 'src/types/blog';
@@ -85,11 +84,11 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         </Grid>
         {/* 中央 */}
         <Grid item lg={8} md={8} sm={10} xs={10}>
-          <center>
-            <div style={{ position: 'relative', width: '500px', height: '300px' }}>
-              <Image src={`/images/thumbnails/${blog.thumbnail}`} fill alt={`${blog.thumbnail}`} />
-            </div>
-          </center>
+          <Grid xs={12}>
+            <center>
+              <img src={`/images/thumbnails/${blog.thumbnail}`} alt={`${blog.thumbnail}`} width={'80%'} height={'80%'} />
+            </center>
+          </Grid>
           <Grid xs={10} sx={{ margin: 'auto' }}>
             <Typography sx={{ fontFamily: 'Kiwi Maru' }}>
               <h1>{blog.title}</h1>
