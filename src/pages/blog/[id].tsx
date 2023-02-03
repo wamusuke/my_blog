@@ -1,5 +1,6 @@
 import { ParsedUrlQuery } from 'node:querystring';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
+import CustomHead from '@/components/CustomHead';
 import Footer from '@/components/Footer';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import Header from '@/components/Header';
@@ -22,7 +23,6 @@ import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
 import type { Blog } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
-import CustomHead from '@/components/CustomHead';
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -70,7 +70,6 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   blog,
   highlightedBody,
 }: Props) => {
-  console.log(blog);
   return (
     <>
       <CustomHead blog={blog} />
