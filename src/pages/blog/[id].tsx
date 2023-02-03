@@ -1,5 +1,6 @@
 import { ParsedUrlQuery } from 'node:querystring';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
+import CustomHead from '@/components/CustomHead';
 import Footer from '@/components/Footer';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import Header from '@/components/Header';
@@ -71,6 +72,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }: Props) => {
   return (
     <>
+      <CustomHead blog={blog} />
       <Header />
       <Grid container>
         {/* 左側 */}

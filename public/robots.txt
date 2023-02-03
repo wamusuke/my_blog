@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://waml.dev
+
+# Sitemaps
+Sitemap: https://waml.dev/sitemap.xml
