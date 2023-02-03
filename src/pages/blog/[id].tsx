@@ -1,14 +1,14 @@
 import { ParsedUrlQuery } from 'node:querystring';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import Footer from '@/components/Footer';
-import { Grid, Box, Paper, Typography } from '@mui/material';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import Header from '@/components/Header';
+import { Grid, Box, Paper, Typography } from '@mui/material';
+import MyProfileCard from '@/components/MyProfileCard';
 import cheerio from 'cheerio';
 import SnsShareButtons from '@/components/SnsShareButtons';
 import hljs from 'highlight.js';
 import TableOfContents from '@/components/TableOfContents';
-import MyProfileCard from '@/components/MyProfileCard';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -87,7 +87,12 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Grid item lg={8} md={8} sm={10} xs={10} sx={{ marginTop: 10 }}>
           <Grid xs={12}>
             <center>
-              <img src={`/images/thumbnails/${blog.thumbnail}`} alt={`${blog.thumbnail}`} width={'80%'} height={'80%'} />
+              <img
+                src={`/images/thumbnails/${blog.thumbnail}`}
+                alt={`${blog.thumbnail}`}
+                width={'80%'}
+                height={'80%'}
+              />
             </center>
           </Grid>
           <Grid xs={10} sx={{ margin: 'auto' }}>

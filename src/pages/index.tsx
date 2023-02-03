@@ -56,11 +56,16 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
             {/* 記事の一覧 */}
             {!selectedBlog.length && <p>現在記事作成中です...</p>}
             <Grid container item={true} rowSpacing={4} columnSpacing={{ xs: 4 }}>
-              {selectedBlog.slice((page - 1) * perPage, Math.min((page - 1) * perPage + perPage, selectedBlog.length)).map((blog) => (
-                <Grid item={true} lg={4} md={6} sm={8} xs={12} key={blog.id}>
-                  <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
-                </Grid>
-              ))}
+              {selectedBlog
+                .slice(
+                  (page - 1) * perPage,
+                  Math.min((page - 1) * perPage + perPage, selectedBlog.length),
+                )
+                .map((blog) => (
+                  <Grid item={true} lg={4} md={6} sm={8} xs={12} key={blog.id}>
+                    <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
+                  </Grid>
+                ))}
             </Grid>
             <Grid xs={12} sx={{ marginTop: 10 }}>
               <PaginationControlled

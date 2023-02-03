@@ -21,7 +21,9 @@ const Header: NextPage = () => {
               textDecoration: 'none',
             }}
           >
-            <ImportantDevicesIcon sx={{ color: '#D49B7B', display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <ImportantDevicesIcon
+              sx={{ color: '#D49B7B', display: { xs: 'none', md: 'flex' }, mr: 1 }}
+            />
             <Box sx={{ fontFamily: 'cursive', color: '#D49B7B' }}>waml&apos;s blog</Box>
           </Typography>
           <Box sx={{ flexGrow: 0.7 }} />
