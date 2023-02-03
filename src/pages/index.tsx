@@ -4,8 +4,9 @@ import Grid from '@mui/material/Grid';
 import Footer from '@/components/Footer';
 import type { InferGetStaticPropsType, NextPage } from 'next';
 import Header from '@/components/Header';
-import { useState } from 'react';
 import PaginationControlled from '@/components/Pagination';
+import Head from 'next/head';
+import { useState } from 'react';
 import TagBar from '@/components/TagBar';
 import { bgColor } from '@/libs/color';
 import { client } from 'src/libs/client';
@@ -48,42 +49,51 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
   const perPage = 9;
 
   return (
-    <Box sx={{ backgroundColor: bgColor }}>
-      <Header />
-      <Grid container>
-        <Grid item={true} container lg={9} md={9} sm={9} xs={12}>
-          <Grid item={true} container sx={{ marginTop: 3, marginLeft: 3 }}>
-            {/* 記事の一覧 */}
-            {!selectedBlog.length && <p>現在記事作成中です...</p>}
-            <Grid container item={true} rowSpacing={4} columnSpacing={{ xs: 4 }}>
-              {selectedBlog
-                .slice(
-                  (page - 1) * perPage,
-                  Math.min((page - 1) * perPage + perPage, selectedBlog.length),
-                )
-                .map((blog) => (
-                  <Grid item={true} lg={4} md={6} sm={8} xs={12} key={blog.id}>
-                    <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
-                  </Grid>
-                ))}
-            </Grid>
-            <Grid xs={12} sx={{ marginTop: 10 }}>
-              <PaginationControlled
-                page={page}
-                setPage={setPage}
-                totalItemSize={selectedBlog.length}
-                sizePerPage={perPage}
-              />
+    <>
+      <Head>
+        <title>{"waml's blog"}</title>
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="description" content={"Atcoderや基本情報技術者試験、応用情報技術者試験などの技術的なブログです"} />
+        <meta property="og:title" content={"waml's blog"} />
+        <meta property='og:url' content={`https://${process.env.NEXT_PUBLIC_SITE_DOMAIN}`} />
+      </Head>
+      <Box sx={{ backgroundColor: bgColor }}>
+        <Header />
+        <Grid container>
+          <Grid item={true} container lg={9} md={9} sm={9} xs={12}>
+            <Grid item={true} container sx={{ marginTop: 3, marginLeft: 3 }}>
+              {/* 記事の一覧 */}
+              {!selectedBlog.length && <p>現在記事作成中です...</p>}
+              <Grid container item={true} rowSpacing={4} columnSpacing={{ xs: 4 }}>
+                {selectedBlog
+                  .slice(
+                    (page - 1) * perPage,
+                    Math.min((page - 1) * perPage + perPage, selectedBlog.length),
+                  )
+                  .map((blog) => (
+                    <Grid item={true} lg={4} md={6} sm={8} xs={12} key={blog.id}>
+                      <BlogCard key={blog.id} blog={blog} tags={blog.tags} />
+                    </Grid>
+                  ))}
+              </Grid>
+              <Grid xs={12} sx={{ marginTop: 10 }}>
+                <PaginationControlled
+                  page={page}
+                  setPage={setPage}
+                  totalItemSize={selectedBlog.length}
+                  sizePerPage={perPage}
+                />
+              </Grid>
             </Grid>
           </Grid>
+          {/* サイドバー */}
+          <Grid item={true} lg={3} md={3} sm={3} xs={12} sx={{ marginTop: 3 }}>
+            <TagBar allTagList={allTagList} setSelectedBlog={setSelectedBlog} allBlogs={blogs} />
+          </Grid>
         </Grid>
-        {/* サイドバー */}
-        <Grid item={true} lg={3} md={3} sm={3} xs={12} sx={{ marginTop: 3 }}>
-          <TagBar allTagList={allTagList} setSelectedBlog={setSelectedBlog} allBlogs={blogs} />
-        </Grid>
-      </Grid>
-      <Footer />
-    </Box>
+        <Footer />
+      </Box>
+    </>
   );
 };
 

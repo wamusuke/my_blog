@@ -22,6 +22,7 @@ import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
 import type { Blog } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
+import CustomHead from '@/components/CustomHead';
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -69,8 +70,10 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   blog,
   highlightedBody,
 }: Props) => {
+  console.log(blog);
   return (
     <>
+      <CustomHead blog={blog} />
       <Header />
       <Grid container>
         {/* 左側 */}
