@@ -44,8 +44,14 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const id = context.params?.id;
   const blog = await client.get({ endpoint: 'blogs', contentId: id });
 
+  // microcmsの画像データのサイズをレスポンシブ対応
+  const resizeImgblog = blog.content.replace(
+    /"(https?:\/\/images\.microcms-assets\.io\/assets\/.+?\.(jpe?g|gif|png))(.+?alt=")(.*?)"/g,
+    '"$1" width="80%" height="80%" alt="$4"',
+  );
+
   // シンタックスハイライト有効化する
-  const $ = cheerio.load(blog.content);
+  const $ = cheerio.load(resizeImgblog);
   $('pre code').each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text());
     $(elm).html(result.value);
@@ -76,17 +82,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <Header />
       <Grid container>
         {/* 左側 */}
-        <Grid item lg={1} md={1} sm={1} xs={1} sx={{ backgroundColor: bgColor }}>
-          {/* SNSシェアボタン追従 */}
-          <Box sx={{ position: 'sticky', top: '20%' }}>
-            <center>
-              <SnsShareButtons />
-              <CopyClipboardButton />
-            </center>
-          </Box>
-        </Grid>
-        {/* 中央 */}
-        <Grid item lg={8} md={8} sm={10} xs={10} sx={{ marginTop: 10 }}>
+        <Grid lg={9} md={9} sm={11} xs={11} sx={{ marginTop: 10 }}>
           <Grid xs={12}>
             <center>
               <img
@@ -130,7 +126,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </Grid>
         </Grid>
         {/* 右側 */}
-        <Grid item lg={3} md={3} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>
+        <Grid lg={3} md={3} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>
           {/* 広告と関連記事入れる */}
           <Box sx={{ position: 'sticky', top: '0%' }}>
             <MyProfileCard />
@@ -140,6 +136,15 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </Box>
         </Grid>
       </Grid>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <SnsShareButtons />
+        <CopyClipboardButton />
+      </Box>
       <Footer />
     </>
   );
