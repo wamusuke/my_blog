@@ -18,7 +18,7 @@ const SnsShareButtons = () => {
     <Box
       sx={{
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
       }}
     >
       <FacebookShareButton url={currentURL} title={'Facebook'}>

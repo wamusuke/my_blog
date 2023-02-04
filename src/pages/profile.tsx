@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { bgColor } from '@/libs/color';
 import Head from 'next/head';
+import { bgColor } from '@/libs/color';
 
 const profile: NextPage = () => {
   return (
@@ -20,7 +20,10 @@ const profile: NextPage = () => {
           content={'Atcoderや基本情報技術者試験、応用情報技術者試験などの技術的なブログです'}
         />
         <meta property='og:title' content={"waml's blogのプロフィール"} />
-        <meta property='og:url' content={`https://${process.env.NEXT_PUBLIC_SITE_DOMAIN}/profile`} />
+        <meta
+          property='og:url'
+          content={`https://${process.env.NEXT_PUBLIC_SITE_DOMAIN}/profile`}
+        />
       </Head>
       <Box sx={{ backgroundColor: bgColor }}>
         <Header />

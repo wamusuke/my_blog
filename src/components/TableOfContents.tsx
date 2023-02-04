@@ -8,7 +8,7 @@ const TableOfContents = () => {
     tocbot.init({
       tocSelector: '.toc',
       contentSelector: '.article',
-      headingSelector: 'h2, h3, h4',
+      headingSelector: 'h1, h2, h3, h4',
     });
     return () => tocbot.destroy();
   }, []);
