@@ -33,8 +33,18 @@ interface Params extends ParsedUrlQuery {
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await client.get({ endpoint: 'blogs' });
 
+  let dev_data: any;
+  // 本番環境用
+  if (process.env.NODE_ENV == 'production') {
+    dev_data = data.contents.filter((content: Blog) => !content.is_dev);
+  }
+  // 開発環境用
+  else {
+    dev_data = data.contents.filter((content: Blog) => content.is_dev);
+  }
+
   // 記事のpath一覧を取得
-  const paths = data.contents.map((content: Blog) => `/blog/${content.id}`);
+  const paths = dev_data.map((content: Blog) => `/blog/${content.id}`);
   return { paths, fallback: false };
 };
 

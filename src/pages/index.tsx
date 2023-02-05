@@ -21,11 +21,11 @@ export const getStaticProps = async () => {
 
   // 本番環境用
   if (process.env.NODE_ENV == 'production') {
-    dev_blog = all_blog.contents.filter((content: any) => !content.is_dev);
+    dev_blog = all_blog.contents.filter((content: Blog) => !content.is_dev);
   }
   // 開発環境デモ用処理
   else {
-    dev_blog = all_blog.contents.filter((content: any) => content.is_dev);
+    dev_blog = all_blog.contents.filter((content: Blog) => content.is_dev);
   }
   return {
     props: {
