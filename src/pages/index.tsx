@@ -55,7 +55,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
         <meta property='og:locale' content='ja_JP' />
         <meta
           name='description'
-          content={'Atcoderや基本情報技術者試験，応用情報技術者試験，プログラミングなど技術的なブログです.自分が学んだことをアウトプットしていきます．'}
+          content={
+            'Atcoderや基本情報技術者試験，応用情報技術者試験，プログラミングなど技術的なブログです.自分が学んだことをアウトプットしていきます．'
+          }
         />
         <meta property='og:title' content={"waml's blog"} />
         <meta property='og:url' content={`https://${process.env.NEXT_PUBLIC_SITE_DOMAIN}`} />

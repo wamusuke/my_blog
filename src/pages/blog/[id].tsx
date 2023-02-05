@@ -23,6 +23,8 @@ import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
 import type { Blog } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
+import BreadCrumb from '@/components/BreadCrumb';
+
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -82,7 +84,10 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <Header />
       <Grid container>
         {/* 左側 */}
-        <Grid lg={9} md={9} sm={11} xs={11} sx={{ marginTop: 10 }}>
+        <Grid lg={9} md={9} sm={11} xs={11} sx={{ marginTop: 3 }}>
+          <Box sx={{ padding: 1 }}>
+            <BreadCrumb overview={blog.overview} />
+          </Box>
           <Grid xs={12}>
             <center>
               <img

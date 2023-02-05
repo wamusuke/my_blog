@@ -15,10 +15,7 @@ const profile: NextPage = () => {
       <Head>
         <title>{"waml's blogのプロフィール"}</title>
         <meta property='og:locale' content='ja_JP' />
-        <meta
-          name='description'
-          content={'wamlの簡単な自己紹介ページです．'}
-        />
+        <meta name='description' content={'wamlの簡単な自己紹介ページです．'} />
         <meta property='og:title' content={"waml's blogのプロフィール"} />
         <meta
           property='og:url'

@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     // 本番用のデータのみ格納する
     if (!data.is_dev) {
       fields.push({
-        loc: `https://${process.env.NEXT_PUBLIC_SITE_DOMAIN}/blogs/${data.id}`,
+        loc: `https://${process.env.NEXT_PUBLIC_SITE_DOMAIN}/blog/${data.id}`,
         lastmod: format(new Date(data.updatedAt), 'yyyy-MM-dd'),
         priority: 1,
         changefreq: 'daily',
