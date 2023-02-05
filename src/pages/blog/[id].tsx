@@ -83,11 +83,11 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <Header />
       <Grid container>
         {/* 左側 */}
-        <Grid lg={9} md={9} sm={11} xs={11} sx={{ marginTop: 3 }}>
+        <Grid item={true} lg={9} md={9} sm={11} xs={11} sx={{ marginTop: 3 }}>
           <Box sx={{ padding: 1 }}>
             <BreadCrumb overview={blog.overview} />
           </Box>
-          <Grid xs={12}>
+          <Grid item={true} xs={12}>
             <center>
               <img
                 src={`/images/thumbnails/${blog.thumbnail}`}
@@ -97,7 +97,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               />
             </center>
           </Grid>
-          <Grid xs={10} sx={{ margin: 'auto' }}>
+          <Grid item={true} xs={10} sx={{ margin: 'auto' }}>
             <Typography sx={{ fontFamily: 'Kiwi Maru' }}>
               <h1>{blog.title}</h1>
             </Typography>
@@ -130,7 +130,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </Grid>
         </Grid>
         {/* 右側 */}
-        <Grid lg={3} md={3} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>
+        <Grid item={true} lg={3} md={3} sm={12} xs={12} sx={{ backgroundColor: bgColor }}>
           {/* 広告と関連記事入れる */}
           <Box sx={{ position: 'sticky', top: '0%' }}>
             <MyProfileCard />

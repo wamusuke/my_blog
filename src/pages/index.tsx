@@ -81,7 +81,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
                     </Grid>
                   ))}
               </Grid>
-              <Grid xs={12} sx={{ marginTop: 10 }}>
+              <Grid item={true} xs={12} sx={{ marginTop: 10 }}>
                 <PaginationControlled
                   page={page}
                   setPage={setPage}

@@ -43,20 +43,20 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
           </Typography>
         </CardContent>
         <Grid container sx={{ height: 'auto', margin: 1 }}>
-          <Grid item xs={1.5}>
+          <Grid item={true} xs={1.5}>
             <SellOutlinedIcon />
           </Grid>
-          <Grid item xs={9.5}>
+          <Grid item={true} xs={9.5}>
             {tagList.map((tag) => (
               <Typography key={tag} sx={{ fontFamily: 'Kiwi Maru' }}>{`#${tag} `}</Typography>
             ))}
           </Grid>
         </Grid>
         <Grid container sx={{ margin: 1 }}>
-          <Grid item xs={1.5}>
+          <Grid item={true} xs={1.5}>
             <AccessTimeOutlinedIcon />
           </Grid>
-          <Grid item xs={9.5}>
+          <Grid item={true} xs={9.5}>
             <Typography sx={{ fontFamily: 'Kiwi Maru' }}>{displayTime(blog.createdAt)}</Typography>
           </Grid>
         </Grid>
