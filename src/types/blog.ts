@@ -4,6 +4,7 @@ export type Blog = {
   content: string;
   tags: Tag[];
   overview: string;
+  is_dev: boolean;
   thumbnail: string;
   createdAt: string;
   updatedAt: string;
