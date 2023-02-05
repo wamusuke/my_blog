@@ -17,7 +17,7 @@ const profile: NextPage = () => {
         <meta property='og:locale' content='ja_JP' />
         <meta
           name='description'
-          content={'Atcoderや基本情報技術者試験、応用情報技術者試験などの技術的なブログです'}
+          content={'wamlの簡単な自己紹介ページです．'}
         />
         <meta property='og:title' content={"waml's blogのプロフィール"} />
         <meta
@@ -85,7 +85,7 @@ const profile: NextPage = () => {
                 }}
               >
                 <Grid item>2019.4～</Grid>
-                <Grid item>上智大学</Grid>
+                <Grid item>現在、大学4年生</Grid>
               </Grid>
               <Grid
                 container
@@ -98,7 +98,32 @@ const profile: NextPage = () => {
                 }}
               >
                 <Grid item>2023.4～</Grid>
-                <Grid item>上智大学院進学予定</Grid>
+                <Grid item>大学院進学予定</Grid>
+              </Grid>
+              {/* 研究の項目 */}
+              <Grid
+                container
+                direction={'row'}
+                justifyContent={'flex-start'}
+                sx={{
+                  fontFamily: 'Kiwi Maru',
+                  fontSize: 32,
+                  color: 'white',
+                }}
+              >
+                研究
+              </Grid>
+              <Grid
+                container
+                direction={'row'}
+                justifyContent={'space-between'}
+                sx={{
+                  fontFamily: 'Kiwi Maru',
+                  fontSize: 20,
+                  color: 'white',
+                }}
+              >
+                <Grid item>連合学習(Federated Learning)について研究してます</Grid>
               </Grid>
               {/* 資格の項目 */}
               <Grid
@@ -199,6 +224,7 @@ const profile: NextPage = () => {
           <Box sx={{ fontFamily: 'Kiwi Maru', fontSize: 20, color: 'white' }}>
             <br />
             現在、大学4年生です。資格の勉強やプログラミング、研究関連で備忘録としてアウトプットしたものが役に立てば幸いです。
+            TOEICとネットワークスペシャリスト試験の勉強をしています。
           </Box>
           {/* ここにGoogle Adsense入れる */}
         </Container>
