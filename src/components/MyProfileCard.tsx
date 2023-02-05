@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 
 const MyProfileCard: NextPage = () => {
   return (
-    <Grid xs={10} sx={{ margin: 'auto' }}>
+    <Grid item={true} xs={10} sx={{ margin: 'auto' }}>
       <Paper sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Box
           sx={{
