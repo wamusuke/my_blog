@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from 'node:querystring';
+import BreadCrumb from '@/components/BreadCrumb';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
 import CustomHead from '@/components/CustomHead';
 import Footer from '@/components/Footer';
@@ -23,7 +24,6 @@ import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
 import type { Blog } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
-import BreadCrumb from '@/components/BreadCrumb';
 
 interface Params extends ParsedUrlQuery {
   id: string;
