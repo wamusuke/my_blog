@@ -56,13 +56,26 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const blog = await client.get({ endpoint: 'blogs', contentId: id });
 
   // microcmsの画像データのサイズをレスポンシブ対応
+  // サイズを80%にする
   const resizeImgblog = blog.content.replace(
     /"(https?:\/\/images\.microcms-assets\.io\/assets\/.+?\.(jpe?g|gif|png))(.+?alt=")(.*?)"/g,
     '"$1" width="80%" height="80%" alt="$4"',
   );
 
+  // h1タグのスタイル変更
+  const header1StyleBlog = resizeImgblog.replace(
+    /(<h1 id=".*?")(>)/g,
+    '$1 style="border-top: solid 4px #918C9C; border-bottom:solid 4px #918C9C;" $2'
+  );
+
+  // h2タグのスタイル変更
+  const header2StyleBlog = header1StyleBlog.replace(
+    /(<h2 id=".*?")(>)/g,
+    '$1 style="border-left: solid 5px #CAE8CE; border-bottom:solid 3px #CAE8CE; padding-left: 10px" $2'
+  );
+
   // シンタックスハイライト有効化する
-  const $ = cheerio.load(resizeImgblog);
+  const $ = cheerio.load(header2StyleBlog);
   $('pre code').each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text());
     $(elm).html(result.value);
