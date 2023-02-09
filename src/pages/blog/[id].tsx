@@ -56,12 +56,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const blog = await client.get({ endpoint: 'blogs', contentId: id });
 
   // custom Contentの文字列を全て結合
-  let all_content:string = ""
+  let all_content: string = '';
 
   blog.content.map((content: content) => {
-    all_content += content.richEditor
-    all_content += content.html
-  })
+    all_content += content.richEditor;
+    all_content += content.html;
+  });
 
   // microcmsの画像データのサイズをレスポンシブ対応
   // サイズを80%にする
@@ -73,13 +73,13 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   // h1タグのスタイル変更
   const header1StyleBlog = resizeImgblog.replace(
     /(<h1 id=".*?")(>)/g,
-    '$1 style="border-top: solid 4px #918C9C; border-bottom:solid 4px #918C9C;" $2'
+    '$1 style="border-top: solid 4px #918C9C; border-bottom:solid 4px #918C9C;" $2',
   );
 
   // h2タグのスタイル変更
   const header2StyleBlog = header1StyleBlog.replace(
     /(<h2 id=".*?")(>)/g,
-    '$1 style="border-left: solid 5px #CAE8CE; border-bottom:solid 3px #CAE8CE; padding-left: 10px" $2'
+    '$1 style="border-left: solid 5px #CAE8CE; border-bottom:solid 3px #CAE8CE; padding-left: 10px" $2',
   );
 
   // シンタックスハイライト有効化する

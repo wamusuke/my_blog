@@ -21,6 +21,11 @@ const profile: NextPage = () => {
           property='og:url'
           content={`https://${process.env.NEXT_PUBLIC_SITE_DOMAIN}/profile`}
         />
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4715488375633917'
+          crossOrigin='anonymous'
+        ></script>
       </Head>
       <Box sx={{ backgroundColor: bgColor }}>
         <Header />

@@ -18,6 +18,11 @@ const CustomHead = ({ blog }: CustomHeadProps) => {
       <meta name='description' content={`${blog.title}の記事です。`} />
       <meta property='og:description' content={`${blog.title}の記事です。`} />
       <meta property='og:image' content={blog.thumbnail} />
+      <script
+        async
+        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4715488375633917'
+        crossOrigin='anonymous'
+      ></script>
     </Head>
   );
 };

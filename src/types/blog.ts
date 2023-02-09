@@ -15,8 +15,8 @@ export type Blog = {
 export type content = {
   fieldId: string;
   richEditor: string;
-  html: string
-}
+  html: string;
+};
 
 export type Tag = {
   id: string;
