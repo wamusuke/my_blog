@@ -22,7 +22,7 @@ import {
 import { bgColor } from '@/libs/color';
 import { displayTime } from '@/libs/display';
 import { client } from 'src/libs/client';
-import type { Blog } from 'src/types/blog';
+import type { Blog, content } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
 
 interface Params extends ParsedUrlQuery {
@@ -55,9 +55,17 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   const id = context.params?.id;
   const blog = await client.get({ endpoint: 'blogs', contentId: id });
 
+  // custom Contentの文字列を全て結合
+  let all_content:string = ""
+
+  blog.content.map((content: content) => {
+    all_content += content.richEditor
+    all_content += content.html
+  })
+
   // microcmsの画像データのサイズをレスポンシブ対応
   // サイズを80%にする
-  const resizeImgblog = blog.content.replace(
+  const resizeImgblog = all_content.replace(
     /"(https?:\/\/images\.microcms-assets\.io\/assets\/.+?\.(jpe?g|gif|png))(.+?alt=")(.*?)"/g,
     '"$1" width="80%" height="80%" alt="$4"',
   );
