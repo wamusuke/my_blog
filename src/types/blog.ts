@@ -1,7 +1,7 @@
 export type Blog = {
   id: string;
   title: string;
-  content: string;
+  content: content[];
   tags: Tag[];
   overview: string;
   is_dev: boolean;
@@ -11,6 +11,12 @@ export type Blog = {
   revisedAt: string;
   publishedAt: string;
 };
+
+export type content = {
+  fieldId: string;
+  richEditor: string;
+  html: string
+}
 
 export type Tag = {
   id: string;
