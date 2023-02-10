@@ -3,14 +3,16 @@ import BreadCrumb from '@/components/BreadCrumb';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
 import CustomHead from '@/components/CustomHead';
 import Footer from '@/components/Footer';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import CachedIcon from '@mui/icons-material/Cached';
 import Header from '@/components/Header';
-import { Grid, Box, Paper, Typography } from '@mui/material';
+import CreateIcon from '@mui/icons-material/Create';
 import MyProfileCard from '@/components/MyProfileCard';
-import cheerio from 'cheerio';
+import { Grid, Box, Paper, Typography } from '@mui/material';
 import SnsShareButtons from '@/components/SnsShareButtons';
-import hljs from 'highlight.js';
+import cheerio from 'cheerio';
 import TableOfContents from '@/components/TableOfContents';
+import hljs from 'highlight.js';
+import { bgColor } from '@/libs/color';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -19,9 +21,8 @@ import {
   GetStaticPropsContext,
   PreviewData,
 } from 'next';
-import { bgColor } from '@/libs/color';
 import { displayTime } from '@/libs/display';
-import { client } from 'src/libs/client';
+import { client, getBlogs } from 'src/libs/client';
 import type { Blog, content } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
 
@@ -31,7 +32,7 @@ interface Params extends ParsedUrlQuery {
 
 // APIリクエストを行うパスを指定
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await client.get({ endpoint: 'blogs' });
+  const data = await getBlogs(100, 'blogs', 'GET');
 
   let dev_data: any;
   // 本番環境用
@@ -147,8 +148,10 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               ))}
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'flex-start', color: '#7C7D7F' }}>
-              <AccessTimeOutlinedIcon sx={{ margin: 0.5 }} />
-              <Box sx={{ margin: 0.5, fontFamily: 'Kiwi Maru' }}>{displayTime(blog.createdAt)}</Box>
+              <CreateIcon sx={{ margin: 0.7 }} />
+              <Box sx={{ margin: 0.7, fontFamily: 'Kiwi Maru' }}>{displayTime(blog.createdAt)}</Box>
+              <CachedIcon sx={{ margin: 0.7 }} />
+              <Box sx={{ margin: 0.7, fontFamily: 'Kiwi Maru' }}>{displayTime(blog.updatedAt)}</Box>
             </Box>
             {/* Microcmsからブログ記事を受け取る */}
             <div
