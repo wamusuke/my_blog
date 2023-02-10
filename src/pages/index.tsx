@@ -9,12 +9,12 @@ import Head from 'next/head';
 import { useState } from 'react';
 import TagBar from '@/components/TagBar';
 import { bgColor } from '@/libs/color';
-import { client } from 'src/libs/client';
+import { client, getBlogs } from 'src/libs/client';
 import type { Blog, Tag } from 'src/types/blog';
 
 // microCMSへAPIリクエスト
 export const getStaticProps = async () => {
-  const all_blog = await client.get({ endpoint: 'blogs' });
+  const all_blog = await getBlogs(100, 'blogs', 'GET');
   const tag = await client.get({ endpoint: 'tags' });
 
   let dev_blog: any;
@@ -27,6 +27,7 @@ export const getStaticProps = async () => {
   else {
     dev_blog = all_blog.contents.filter((content: Blog) => content.is_dev);
   }
+
   return {
     props: {
       blogs: dev_blog,
@@ -47,6 +48,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
   // paginationのページ
   const [page, setPage] = useState<number>(1);
   const perPage = 9;
+
+  console.log(selectedBlog.length);
 
   return (
     <>

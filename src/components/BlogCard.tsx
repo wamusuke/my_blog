@@ -1,4 +1,5 @@
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import CachedIcon from '@mui/icons-material/Cached';
+import CreateIcon from '@mui/icons-material/Create';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import type { NextPage } from 'next';
@@ -54,10 +55,18 @@ const BlogCard: NextPage<Props> = ({ blog, tags }: Props) => {
         </Grid>
         <Grid container sx={{ margin: 1 }}>
           <Grid item={true} xs={1.5}>
-            <AccessTimeOutlinedIcon />
+            <CreateIcon />
           </Grid>
           <Grid item={true} xs={9.5}>
             <Typography sx={{ fontFamily: 'Kiwi Maru' }}>{displayTime(blog.createdAt)}</Typography>
+          </Grid>
+        </Grid>
+        <Grid container sx={{ margin: 1 }}>
+          <Grid item={true} xs={1.5}>
+            <CachedIcon />
+          </Grid>
+          <Grid item={true} xs={9.5}>
+            <Typography sx={{ fontFamily: 'Kiwi Maru' }}>{displayTime(blog.updatedAt)}</Typography>
           </Grid>
         </Grid>
       </Card>
