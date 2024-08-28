@@ -1,5 +1,6 @@
 import { MenuBookOutlined } from '@mui/icons-material';
 import { Box, Typography, Paper, Grid } from '@mui/material';
+import Script from 'next/script';
 import React, { useEffect } from 'react';
 import tocbot from 'tocbot';
 
@@ -48,6 +49,22 @@ const TableOfContents = () => {
           }
         `}</style>
       </Paper>
+      {/* admax */}
+      <div className="admax-ads" data-admax-id="a442ea427d72f6dc94824623fdc91c6e" style={{ display: 'inline-block', width: '160px', height: '600px' }}></div>
+      <Script
+        id="admax-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(admaxads = window.admaxads || []).push({admax_id: "a442ea427d72f6dc94824623fdc91c6e",type: "banner"});`,
+        }}
+      />
+      <Script
+        src="https://adm.shinobi.jp/st/t.js"
+        strategy="afterInteractive"
+        type="text/javascript"
+        async
+      />
+      {/* admax */}
     </Grid>
   );
 };
