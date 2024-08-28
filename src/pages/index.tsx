@@ -6,6 +6,7 @@ import type { InferGetStaticPropsType, NextPage } from 'next';
 import Header from '@/components/Header';
 import PaginationControlled from '@/components/Pagination';
 import Head from 'next/head';
+import Script from 'next/script';
 import { useState } from 'react';
 import TagBar from '@/components/TagBar';
 import { bgColor } from '@/libs/color';
@@ -102,10 +103,23 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
           {/* サイドバー */}
           <Grid item={true} lg={3} md={3} sm={3} xs={12} sx={{ marginTop: 3 }}>
             <TagBar allTagList={allTagList} setSelectedBlog={setSelectedBlog} allBlogs={blogs} />
+            {/* admax */}
+            <div className="admax-ads" data-admax-id="a442ea427d72f6dc94824623fdc91c6e" style={{ display: 'inline-block', width: '160px', height: '600px' }}></div>
+            <Script
+              id="admax-script"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `(admaxads = window.admaxads || []).push({admax_id: "a442ea427d72f6dc94824623fdc91c6e",type: "banner"});`,
+              }}
+            />
+            <Script
+              src="https://adm.shinobi.jp/st/t.js"
+              strategy="afterInteractive"
+              type="text/javascript"
+              async
+            />
+            {/* admax */}
           </Grid>
-          {/* admax */}
-          <script src="https://adm.shinobi.jp/s/a442ea427d72f6dc94824623fdc91c6e" async></script>
-          {/* admax */}
         </Grid>
         <Footer />
       </Box>

@@ -126,7 +126,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               src={`/images/thumbnails/${blog.thumbnail}`}
               alt={`${blog.thumbnail}`}
               width={500} // 適切な幅を指定
-              height={500} // 適切な高さを指定
+              height={650} // 適切な高さを指定
             />
             </center>
           </Grid>
