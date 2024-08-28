@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { ParsedUrlQuery } from 'node:querystring';
 import BreadCrumb from '@/components/BreadCrumb';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
@@ -23,6 +22,7 @@ import {
   PreviewData,
 } from 'next';
 import { displayTime } from '@/libs/display';
+import Image from 'next/image';
 import { client, getBlogs } from 'src/libs/client';
 import type { Blog, content } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
