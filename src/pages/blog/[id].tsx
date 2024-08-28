@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ParsedUrlQuery } from 'node:querystring';
 import BreadCrumb from '@/components/BreadCrumb';
 import CopyClipboardButton from '@/components/CopyClipboardButton';
@@ -121,12 +122,12 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </Box>
           <Grid item={true} xs={12}>
             <center>
-              <img
-                src={`/images/thumbnails/${blog.thumbnail}`}
-                alt={`${blog.thumbnail}`}
-                width={'80%'}
-                height={'80%'}
-              />
+            <Image
+              src={`/images/thumbnails/${blog.thumbnail}`}
+              alt={`${blog.thumbnail}`}
+              width={500} // 適切な幅を指定
+              height={500} // 適切な高さを指定
+            />
             </center>
           </Grid>
           <Grid item={true} xs={10} sx={{ margin: 'auto' }}>
