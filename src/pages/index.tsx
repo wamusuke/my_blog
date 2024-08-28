@@ -104,7 +104,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
             <TagBar allTagList={allTagList} setSelectedBlog={setSelectedBlog} allBlogs={blogs} />
           </Grid>
           {/* admax */}
-          <script src="https://adm.shinobi.jp/s/a442ea427d72f6dc94824623fdc91c6e"></script>
+          <script src="https://adm.shinobi.jp/s/a442ea427d72f6dc94824623fdc91c6e" async></script>
           {/* admax */}
         </Grid>
         <Footer />
