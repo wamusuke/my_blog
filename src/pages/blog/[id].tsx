@@ -24,6 +24,7 @@ import {
 import { displayTime } from '@/libs/display';
 import Image from 'next/image';
 import { client, getBlogs } from 'src/libs/client';
+import Script from 'next/script';
 import type { Blog, content } from 'src/types/blog';
 import 'highlight.js/styles/hybrid.css';
 
@@ -125,8 +126,8 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <Image
               src={`/images/thumbnails/${blog.thumbnail}`}
               alt={`${blog.thumbnail}`}
-              width={500} // 適切な幅を指定
-              height={650} // 適切な高さを指定
+              width={450} // 適切な幅を指定
+              height={450} // 適切な高さを指定
             />
             </center>
           </Grid>
@@ -170,6 +171,22 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           <Box sx={{ position: 'sticky', top: '0%' }}>
             <MyProfileCard />
           </Box>
+          {/* admax */}
+          <div className="admax-ads" data-admax-id="a442ea427d72f6dc94824623fdc91c6e" style={{ display: 'inline-block', width: '160px', height: '600px' }}></div>
+          <Script
+            id="admax-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `(admaxads = window.admaxads || []).push({admax_id: "a442ea427d72f6dc94824623fdc91c6e",type: "banner"});`,
+            }}
+          />
+          <Script
+            src="https://adm.shinobi.jp/st/t.js"
+            strategy="afterInteractive"
+            type="text/javascript"
+            async
+          />
+          {/* admax */}
           <Box sx={{ position: 'sticky', top: '40%' }}>
             <TableOfContents />
           </Box>

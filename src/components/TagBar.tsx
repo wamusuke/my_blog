@@ -86,22 +86,6 @@ const TagBar: NextPage<Props> = ({ allTagList, setSelectedBlog, allBlogs }: Prop
           </ListItemButton>
         ))}
       </List>
-      {/* admax */}
-      <div className="admax-ads" data-admax-id="a442ea427d72f6dc94824623fdc91c6e" style={{ display: 'inline-block', width: '160px', height: '600px' }}></div>
-      <Script
-        id="admax-script"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(admaxads = window.admaxads || []).push({admax_id: "a442ea427d72f6dc94824623fdc91c6e",type: "banner"});`,
-        }}
-      />
-      <Script
-        src="https://adm.shinobi.jp/st/t.js"
-        strategy="afterInteractive"
-        type="text/javascript"
-        async
-      />
-      {/* admax */}
     </center>
   );
 };
